@@ -5,6 +5,10 @@ const mongoose = require("mongoose")
 
 app.use(express.json());
 
+
+
+
+//  docker file is getting pushed , configuration is done in gitub workflow
 app.get("/", (req, res) => {
 	return res.status(200)
 		.json({
@@ -33,7 +37,6 @@ const PORT = process.env.PORT || 4001;
 const server = app.listen(PORT, () => {
 	console.log("server is listening at : ", PORT)
 })
-
 
 
 process.on("SIGINT", () => {
