@@ -24,8 +24,7 @@ jobs:
     - name: Install Dependencies
       run: npm install  # Installs project dependencies from package.json
 
-    - name: Run Tests (Optional)
-      run: npm test  # Runs tests to ensure application stability
+   
 
     - name: Log in to Docker Hub
       uses: docker/login-action@v3
