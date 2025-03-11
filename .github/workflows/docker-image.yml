@@ -8,21 +8,21 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest  # The job runs on the latest Ubuntu environment
+    runs-on: ubuntu-latest  
     
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v4
       with:
-        fetch-depth: 0  # Ensures full history is fetched (useful for versioning)
+        fetch-depth: 0  
 
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: 18  # Use the Node.js version your project requires
+        node-version: 18 
 
     - name: Install Dependencies
-      run: npm install  # Installs project dependencies from package.json
+      run: npm install 
 
   
 
@@ -36,15 +36,15 @@ jobs:
       id: meta
       uses: docker/metadata-action@v5
       with:
-        images: khushaldhale/node-app-1  # Replace with your actual Docker Hub repo
+        images: khushaldhale/node-app  
 
     - name: Build and Push Docker Image
       uses: docker/build-push-action@v5
       with:
-        context: .  # Uses the current directory for building the image
-        file: ./Dockerfile  # Specifies the Dockerfile location
-        push: true  # Enables pushing the image to Docker Hub
+        context: . 
+        file: ./Dockerfile 
+        push: true 
         tags: |
-          khushaldhale/node-app:latest
-          khushaldhale/node-app:${{ github.sha }}  # Uses commit SHA as a tag for versioning
-        labels: ${{ steps.meta.outputs.labels }}  # Adds metadata to the image
+          khushaldhale/node-app:latest 
+          khushaldhale/node-app:${{ github.sha }} 
+        labels: ${{ steps.meta.outputs.labels }} 
